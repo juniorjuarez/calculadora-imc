@@ -3,8 +3,6 @@ Entendi! Vamos formatar o texto em Markdown:
 ```markdown
 # Calculadora de IMC
 
-![Interface da Calculadora de IMC](link_para_imagem)
-
 ## Descrição
 
 Este é um projeto de uma aplicação simples de calculadora de Índice de Massa Corporal (IMC) que permite aos usuários calcular seu IMC com base em sua altura, peso e biotipo (masculino ou feminino).
