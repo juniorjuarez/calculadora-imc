@@ -1,4 +1,7 @@
 import flet as ft
+import sys
+import subprocess
+
 
 dinnergray = "#696969"
 Gainsboro = "#DCDCDC"
@@ -49,16 +52,18 @@ def main(page: ft.Page):
             page.banner.open = True
             page.update()
         else:
-            try:
+            try: 
                 if "contresult" in globals():
                     page.remove(contresult)
                     page.update()
-               
-                if not peso.value.replace('.', '').replace('-', '').isdigit() or not altura.value.replace('.', '').replace('-', '').isdigit():
+                
+                if not peso.value.replace('.', '').replace(',','').replace('-', '').isdigit() or not altura.value.replace('.', '').replace(',','').replace('-', '').isdigit():
                     raise ValueError("Os valores de peso e altura devem ser numéricos")
-             
-                valor_peso = float(peso.value)
-                valor_altura = float(altura.value)
+                    
+
+               
+                valor_peso = float(peso.value.replace(',','.'))
+                valor_altura = float(altura.value.replace(',','.'))
                 valor_biotipo = biotipo.value
 
                 imc = valor_peso / (valor_altura * valor_altura)
@@ -293,6 +298,9 @@ def main(page: ft.Page):
                 print(f"Erro inesperado: {ex}")
                 page.banner.content = ft.Text(f"Erro: {ex}", size=12, color=Gainsboro)
                 page.banner.open = True
+                
+       
+                
                 peso.value = ""
                 altura.value = ""
                 biotipo.value = ""
